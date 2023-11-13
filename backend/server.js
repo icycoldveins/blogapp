@@ -85,6 +85,20 @@ app.get("/api/posts/:id", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+app.delete("/posts/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const post = await Post.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    await Post.findByIdAndDelete(id);
+    res.json({ message: "Post deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

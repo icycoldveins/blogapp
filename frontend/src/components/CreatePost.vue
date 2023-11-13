@@ -42,6 +42,7 @@ export default {
         console.error(error);
         alert("Error creating post");
       }
+      
     },
   },
 };
