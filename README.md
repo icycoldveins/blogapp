@@ -3,7 +3,7 @@
 ## Introduction
 
 BlogApp is a user-friendly blogging platform. It is built using Vue.js for the frontend and Node.js with Express.js for the backend. This application simplifies the process of blogging by providing functionalities to create, view, and manage blog posts.
-
+![Alt text](image.png)
 ## Project Setup
 
 ### Backend
