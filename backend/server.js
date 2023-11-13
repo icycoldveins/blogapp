@@ -1,14 +1,14 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const mongooseundefined = require("mongoose");
 const cors = require("cors");
-const Post = require("./models/post"); // Import your Post model at the top of your file
+const Post = require("./models/post");
 require("dotenv").config();
 
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // For parsing application/json
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose
@@ -38,41 +38,6 @@ const userRoutes = require("./routes/userRoutes");
 
 app.use("/api/users", userRoutes);
 
-app.get("/api/posts", async (req, res) => {
-  try {
-    const posts = await Post.find({});
-    res.send(posts);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-app.get("/posts/:id", async (req, res) => {
-  const id = req.params.id;
-  const post = await Post.findById(id); // Assuming Post is your Mongoose model
-  if (post) {
-    res.json(post);
-  } else {
-    res.status(404).send("Post not found");
-  }
-});
-app.post("/posts", async (req, res) => {
-  const { title, content } = req.body;
-  const post = new Post({ title, content });
-  try {
-    await post.save();
-    res.status(201).json(post);
-  } catch (error) {
-    res.status(500).json({ error: "Error creating post" });
-  }
-});
-app.get("/posts", async (req, res) => {
-  try {
-    const posts = await Post.find();
-    res.json(posts);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching posts" });
-  }
-});
 app.get("/api/posts/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -85,6 +50,7 @@ app.get("/api/posts/:id", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 app.delete("/posts/:id", async (req, res) => {
   const id = req.params.id;
   try {
