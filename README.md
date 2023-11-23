@@ -53,4 +53,3 @@ BlogApp is a user-friendly blogging platform. It is built using Vue.js for the f
 - **Read Blog Post**: Click on any blog post to read its full content.
 - **Delete Blog Post**: Remove blog posts that are no longer needed.
 
-Thank you for using BlogApp! Happy blogging! 📝✨
